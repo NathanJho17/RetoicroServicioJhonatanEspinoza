@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  msclientes:
+    build: .
+    container_name: clientes-microservice
+    ports:
+      - "8095:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+    depends_on:
+      - dbClientes
+  dbClientes:
+    image: postgres:15
+    container_name: dbClientes-db
+    environment:
+      POSTGRES_USER: user_cliente
+      POSTGRES_PASSWORD: clientes.TCS
+      POSTGRES_DB: DB_Clientes
+    ports:
+      - "5435:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:

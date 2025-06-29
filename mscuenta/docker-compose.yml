@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  dbCuentas:
+    image: postgres:15
+    container_name: postgres-db
+    environment:
+      POSTGRES_USER: user_cuentas
+      POSTGRES_PASSWORD: cuentas.TCS
+      POSTGRES_DB: DB_Cuentas
+    ports:
+      - "5436:5432"
+    volumes:
+      - postgres_data_cuenta:/var/lib/postgresql/data
+
+volumes:
+  postgres_data_cuenta:
