@@ -168,7 +168,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"numeroCuenta\": \"103332765981214\",\r\n  \"tipoCuenta\": \"Ahorro\",\r\n  \"saldoInicial\": 2000\r\n}\r\n",
+							"raw": "{\r\n  \"numeroCuenta\": \"185620854788525\",\r\n  \"tipoCuenta\": \"Corriente\",\r\n  \"saldoInicial\": 0.1,\r\n  \"saldoDisponible\":20000\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -176,7 +176,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8096/mscuenta/api/cuentas/1",
+							"raw": "http://localhost:8096/mscuenta/api/cuentas/7",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -186,7 +186,7 @@
 								"mscuenta",
 								"api",
 								"cuentas",
-								"1"
+								"7"
 							]
 						}
 					},

@@ -31,8 +31,8 @@ public class EditarCuentaCase {
 
             foundCuenta.setNumeroCuenta(dto.getNumeroCuenta());
             foundCuenta.setSaldoInicial(dto.getSaldoInicial());
+            foundCuenta.setSaldoDisponible(dto.getSaldoDisponible());
             foundCuenta.setTipoCuenta(dto.getTipoCuenta());
-           
 
             Cuenta created = _cuentaRepository.update(foundCuenta);
             CuentaVerDTO updated = _cuentaDTOMapper.toVerDTO(created);
