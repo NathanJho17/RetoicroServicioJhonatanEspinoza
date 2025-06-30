@@ -39,6 +39,7 @@ public class EditarClienteCase {
 
             Cliente created = _clienteRepository.update(foundCliente);
             ClienteVerDTO updated = _clienteDTOMapper.toVerDTO(created);
+
             return new RespuestaGenerica<ClienteVerDTO>(true, "Cliente actualizado existosamente", updated, null);
         } catch (Exception e) {
 

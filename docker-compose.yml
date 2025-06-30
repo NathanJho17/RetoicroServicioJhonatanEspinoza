@@ -1,0 +1,74 @@
+version: "3.8"
+
+services:
+  msclientes:
+    build:
+      context: ./mscliente
+    container_name: clientes-microservice
+    ports:
+      - "8095:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+    depends_on:
+      - dbClientes
+      - rabbitmq
+    networks:
+      - net-tcs
+  dbClientes:
+    image: postgres:15
+    container_name: dbClientes-db
+    environment:
+      POSTGRES_USER: user_cliente
+      POSTGRES_PASSWORD: clientes.TCS
+      POSTGRES_DB: DB_Clientes
+    ports:
+      - "5435:5432"
+    networks:
+      - net-tcs
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+  mscuentas:
+    build:
+      context: ./mscuenta
+    container_name: cuentas-microservice
+    ports:
+      - "8096:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+    depends_on:
+      - dbCuentas
+      - rabbitmq
+    networks:
+      - net-tcs
+  dbCuentas:
+    image: postgres:15
+    container_name: postgres-db
+    environment:
+      POSTGRES_USER: user_cuentas
+      POSTGRES_PASSWORD: cuentas.TCS
+      POSTGRES_DB: DB_Cuentas
+    ports:
+      - "5436:5432"
+    networks:
+      - net-tcs
+    volumes:
+      - postgres_data_cuenta:/var/lib/postgresql/data
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+    networks:
+      - net-tcs
+
+volumes:
+  postgres_data:
+  postgres_data_cuenta:
+
+networks:
+  net-tcs:
+    driver: bridge

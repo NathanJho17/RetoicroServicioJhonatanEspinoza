@@ -34,6 +34,8 @@ public class CuentaEntity {
 
     private boolean estado;
 
+     private String cliente;
+
     @OneToMany(mappedBy = "cuenta")
     private List<MovimientoEntity> movimientos;
 }

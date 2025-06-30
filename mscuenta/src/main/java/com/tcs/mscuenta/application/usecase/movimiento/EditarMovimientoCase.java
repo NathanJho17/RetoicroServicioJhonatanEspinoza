@@ -3,7 +3,6 @@ package com.tcs.mscuenta.application.usecase.movimiento;
 import org.springframework.stereotype.Service;
 
 import com.tcs.mscuenta.application.dto.movimiento.MovimientoEditarDTO;
-import com.tcs.mscuenta.application.mapper.MovimientoDTOMapper;
 import com.tcs.mscuenta.application.response.RespuestaGenerica;
 import com.tcs.mscuenta.domain.model.Cuenta;
 import com.tcs.mscuenta.domain.model.Movimiento;
@@ -14,14 +13,12 @@ import com.tcs.mscuenta.domain.repository.IMovimientoRepository;
 public class EditarMovimientoCase {
 
     private IMovimientoRepository _movimientoRepository;
-    private MovimientoDTOMapper _movimientoDTOMapper;
     private ICuentaRepository _cuentaRepository;
     private double _newSaldo;
 
-    public EditarMovimientoCase(IMovimientoRepository movimientoRepository, MovimientoDTOMapper movimientoDTOMapper,
+    public EditarMovimientoCase(IMovimientoRepository movimientoRepository,
             ICuentaRepository cuentaRepository) {
         _movimientoRepository = movimientoRepository;
-        _movimientoDTOMapper = movimientoDTOMapper;
         _cuentaRepository = cuentaRepository;
         _newSaldo = 0;
     }

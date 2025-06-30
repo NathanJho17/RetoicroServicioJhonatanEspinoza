@@ -12,6 +12,7 @@ public class Cuenta {
 
     private boolean estado;
 
+    private String cliente;
 
     public Integer getId() {
         return this.id;
@@ -52,6 +53,14 @@ public class Cuenta {
 
     public void setEstado(boolean estado) {
         this.estado = estado;
+    }
+
+     public String getCliente() {
+        return this.cliente;
+    }
+
+    public void setCliente(String cliente) {
+        this.cliente = cliente;
     }
 
 }

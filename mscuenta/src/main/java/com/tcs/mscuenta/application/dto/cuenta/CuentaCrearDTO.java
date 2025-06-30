@@ -15,6 +15,9 @@ public class CuentaCrearDTO {
     @Pattern(regexp = "Ahorro|Corriente", message = "La debe ser Ahorro o Corriente")
     private String tipoCuenta;
 
-    @DecimalMin(value = "0.0",message = "El saldo inicial debe ser mayor o igual a 0")
+    @DecimalMin(value = "0.0", message = "El saldo inicial debe ser mayor o igual a 0")
     private double saldoInicial;
+
+    private String cliente;
+
 }
