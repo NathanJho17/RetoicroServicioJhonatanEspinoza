@@ -3,6 +3,7 @@ package com.tcs.mscuenta.infrastructure.mapper;
 import java.util.List;
 
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 
 import com.tcs.mscuenta.domain.model.Cuenta;
@@ -14,6 +15,7 @@ public interface CuentaMapper {
 
     Cuenta toDomain(CuentaEntity entity);
     List<Cuenta> toDomainList(List<CuentaEntity> entity);
+    @Mapping(target = "movimientos", ignore = true)
     CuentaEntity toEntity(Cuenta cuenta);
 
 }
