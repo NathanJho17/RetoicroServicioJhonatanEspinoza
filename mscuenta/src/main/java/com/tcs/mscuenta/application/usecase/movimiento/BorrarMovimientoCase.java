@@ -12,15 +12,14 @@ import com.tcs.mscuenta.domain.repository.IMovimientoRepository;
 public class BorrarMovimientoCase {
 
     private IMovimientoRepository _movimientoRepository;
-    private double _restoreSaldo;
     private ICuentaRepository _cuentaRepository;
+    private double _restoreSaldo;
 
     public BorrarMovimientoCase(IMovimientoRepository movimientoRepository,
             ICuentaRepository cuentaRepository) {
         _movimientoRepository = movimientoRepository;
         _cuentaRepository = cuentaRepository;
         _restoreSaldo = 0;
-
     }
 
     public RespuestaGenerica<Boolean> hardDelete(Integer id) {
@@ -34,20 +33,13 @@ public class BorrarMovimientoCase {
             // Get cuenta
             Cuenta foundCuenta = _cuentaRepository.getById(foundMovimiento.getIdCuenta());
             // New saldo value if 'Retiro' or 'Deposito'
-            switch (foundMovimiento.getTipoMovimiento()) {
-                case "Retiro":
-                    _restoreSaldo = foundCuenta.getSaldoInicial() + foundMovimiento.getValor();
-                    break;
-                case "Deposito":
-                    _restoreSaldo = foundCuenta.getSaldoInicial() - foundMovimiento.getValor();
-                    break;
-            }
+            _restoreSaldo = foundCuenta.getSaldoDisponible() + foundMovimiento.getValor();
             _movimientoRepository.delete(id);
-            foundCuenta.setSaldoInicial(_restoreSaldo);
+            foundCuenta.setSaldoDisponible(_restoreSaldo);
             Cuenta updateCuenta = _cuentaRepository.update(foundCuenta);
             return new RespuestaGenerica<Boolean>(true,
                     "Movimiento eliminado exitosamente, no se puede recuperar, saldo restaurado a "
-                            + updateCuenta.getSaldoInicial(),
+                            + updateCuenta.getSaldoDisponible(),
                     true, null);
         } catch (Exception e) {
             return new RespuestaGenerica<Boolean>(false, "No se pudo eliminar el movimiento",

@@ -32,6 +32,10 @@ public class CuentaEntity {
 
     private double saldoInicial;
 
+    @Column(name = "saldo_disponible")
+
+    private double saldoDisponible;
+
     private boolean estado;
 
      private String cliente;

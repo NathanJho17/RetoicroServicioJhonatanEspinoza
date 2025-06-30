@@ -12,4 +12,5 @@ public class MovimientoVerDTO {
     private double saldo;
     private CuentaVerDTO cuenta;
     private String tipoMovimiento;
+    
 }

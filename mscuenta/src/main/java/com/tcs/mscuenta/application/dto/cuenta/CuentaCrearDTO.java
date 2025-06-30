@@ -18,6 +18,8 @@ public class CuentaCrearDTO {
     @DecimalMin(value = "0.0", message = "El saldo inicial debe ser mayor o igual a 0")
     private double saldoInicial;
 
+    private double saldoDisponible;
+
     private String cliente;
 
 }

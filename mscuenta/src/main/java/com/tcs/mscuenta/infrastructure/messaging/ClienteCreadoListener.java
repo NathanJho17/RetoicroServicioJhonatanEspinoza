@@ -22,11 +22,12 @@ public class ClienteCreadoListener {
 
     @RabbitListener(queues = RabbitConfig.QUEUE_NAME)
     public void onClienteCreado(ClienteCreadoEvent event) {
-        System.out.println("📩 Evento recibido: " + event.getNombre());
+        System.out.println("Evento recibido: " + event.getNombre());
 
         CuentaCrearDTO cuenta = new CuentaCrearDTO();
         cuenta.setCliente(event.getNombre());
         cuenta.setSaldoInicial(0.1);
+        cuenta.setSaldoDisponible(0.1);
         cuenta.setTipoCuenta("Ahorro");
         cuenta.setNumeroCuenta(generarNumeroCuenta());
         _crearCuentaCase.saveCuenta(cuenta);

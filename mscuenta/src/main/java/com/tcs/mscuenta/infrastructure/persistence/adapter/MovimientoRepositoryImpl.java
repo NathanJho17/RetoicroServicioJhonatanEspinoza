@@ -35,13 +35,14 @@ public class MovimientoRepositoryImpl implements IMovimientoRepository {
     }
 
     @Override
-    public Integer save(Movimiento movimiento, Cuenta cuenta) {
+    public Movimiento save(Movimiento movimiento, Cuenta cuenta) {
         MovimientoEntity movimientoEntity = _movimientoMapper.toEntity(movimiento);
         CuentaEntity cuentaEntity = _cuentaMapper.toEntity(cuenta);
         movimientoEntity.setCuenta(cuentaEntity);
         movimientoEntity.setFecha(LocalDate.now());
         _jpaMovimientoRepository.save(movimientoEntity);
-        return movimientoEntity.getId();
+        Movimiento savedMovimiento=_movimientoMapper.toDomain(movimientoEntity);
+        return savedMovimiento;
     }
 
     @Override

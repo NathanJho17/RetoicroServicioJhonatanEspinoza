@@ -61,10 +61,10 @@ public class MovimientoController {
     }
 
     @PostMapping()
-    public ResponseEntity<RespuestaGenerica<Integer>> saveMovimiento(
+    public ResponseEntity<RespuestaGenerica<MovimientoVerDTO>> saveMovimiento(
             @Valid @RequestBody MovimientoCrearDTO movimientoCrearDTO) {
 
-        RespuestaGenerica<Integer> response = _crearMovimientoCase.saveMovimiento(movimientoCrearDTO);
+        RespuestaGenerica<MovimientoVerDTO> response = _crearMovimientoCase.saveMovimiento(movimientoCrearDTO);
         if (response.isSatisfactorio()) {
             return ResponseEntity.ok(response);
         } else {
@@ -127,9 +127,9 @@ public class MovimientoController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<RespuestaGenerica<Boolean>> updateCuenta(@PathVariable(name = "id") Integer id,
+    public ResponseEntity<RespuestaGenerica<MovimientoVerDTO>> updateCuenta(@PathVariable(name = "id") Integer id,
             @RequestBody MovimientoEditarDTO movimientoEditarDTO) {
-        RespuestaGenerica<Boolean> response = _editarMovimientoCase.updateMovimiento(movimientoEditarDTO,id);
+        RespuestaGenerica<MovimientoVerDTO> response = _editarMovimientoCase.updateMovimiento(movimientoEditarDTO,id);
         if (response.isSatisfactorio()) {
             return ResponseEntity.ok(response);
         } else {

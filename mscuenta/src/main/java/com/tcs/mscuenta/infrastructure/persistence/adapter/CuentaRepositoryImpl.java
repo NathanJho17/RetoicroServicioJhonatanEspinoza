@@ -27,6 +27,7 @@ public class CuentaRepositoryImpl implements ICuentaRepository {
     public Integer save(Cuenta cuenta) {
         CuentaEntity cuentaEntity = _cuentaMapper.toEntity(cuenta);
         cuentaEntity.setEstado(true);
+        cuentaEntity.setSaldoDisponible(cuentaEntity.getSaldoInicial());
         _jpaCuentaRepository.save(cuentaEntity);
         return cuentaEntity.getId();
     }

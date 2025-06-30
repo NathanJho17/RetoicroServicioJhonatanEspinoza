@@ -10,6 +10,8 @@ public class Cuenta {
 
     private double saldoInicial;
 
+    private double saldoDisponible;
+
     private boolean estado;
 
     private String cliente;
@@ -30,7 +32,6 @@ public class Cuenta {
         this.numeroCuenta = numeroCuenta;
     }
 
-
     public String getTipoCuenta() {
         return this.tipoCuenta;
     }
@@ -47,6 +48,14 @@ public class Cuenta {
         this.saldoInicial = saldoInicial;
     }
 
+      public double getSaldoDisponible() {
+        return this.saldoDisponible;
+    }
+
+    public void setSaldoDisponible(double saldoDisponible) {
+        this.saldoDisponible = saldoDisponible;
+    }
+
     public boolean getEstado() {
         return this.estado;
     }
@@ -55,7 +64,7 @@ public class Cuenta {
         this.estado = estado;
     }
 
-     public String getCliente() {
+    public String getCliente() {
         return this.cliente;
     }
 

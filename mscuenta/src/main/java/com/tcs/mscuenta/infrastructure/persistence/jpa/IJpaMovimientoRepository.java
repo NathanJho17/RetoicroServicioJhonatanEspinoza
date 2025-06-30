@@ -15,4 +15,5 @@ public interface IJpaMovimientoRepository extends JpaRepository<MovimientoEntity
 
     @Query("SELECT m FROM MovimientoEntity m WHERE m.cuenta.numeroCuenta = :numero")
     List<MovimientoEntity> findByNumeroCuenta(@Param("numero") String numero);
+
 }

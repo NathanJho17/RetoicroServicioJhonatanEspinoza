@@ -45,6 +45,10 @@ public class Movimiento {
         return this.fecha;
     }
 
+     public void setFecha(LocalDate fecha) {
+         this.fecha=fecha;
+    }
+
     public double getValor() {
         return this.valor;
     }
