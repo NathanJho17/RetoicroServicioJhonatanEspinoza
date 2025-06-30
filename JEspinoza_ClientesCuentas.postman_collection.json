@@ -1,0 +1,273 @@
+{
+	"info": {
+		"_postman_id": "30a210cf-0e23-4f8f-bf1b-8a5174edd556",
+		"name": "JEspinoza_ClientesCuentas",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5321373",
+		"_collection_link": "https://gold-resonance-631109.postman.co/workspace/Pruebas~4ce54788-1b46-4f27-a9ed-f0b9a50d661d/collection/5321373-30a210cf-0e23-4f8f-bf1b-8a5174edd556?action=share&source=collection_link&creator=5321373"
+	},
+	"item": [
+		{
+			"name": "Clientes",
+			"item": [
+				{
+					"name": "Crear cliente",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nombreApellido\": \"Jse Lopez\",\r\n  \"genero\": \"Masculino\",\r\n  \"edad\": 25,\r\n  \"identificacion\": \"0654441118\",\r\n  \"telefono\": \"0981055544\",\r\n  \"direccion\": \"Av. Siempre 742\",\r\n  \"contrasena\": \"clavesegura\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8095/mscliente/api/clientes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8095",
+							"path": [
+								"mscliente",
+								"api",
+								"clientes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Borrar (Soft) Cliente",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8095/mscliente/api/clientes/9",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8095",
+							"path": [
+								"mscliente",
+								"api",
+								"clientes",
+								"9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Lista clientes",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nombreApellido\": \"Jhonatan Espinoza\",\r\n  \"genero\": \"Masculino\",\r\n  \"edad\": 31,\r\n  \"identificacion\": \"1234567890\",\r\n  \"telefono\": \"0987654321\",\r\n  \"direccion\": \"Av. Siempre Viva 742\",\r\n  \"clienteid\": \"CL-001\",\r\n  \"contrasena\": \"secreta123\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8095/mscliente/api/clientes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8095",
+							"path": [
+								"mscliente",
+								"api",
+								"clientes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Editar Cliente",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nombreApellido\": \"Jhonatan Fernando Espinoza\",\r\n  \"genero\": \"Masculino\",\r\n  \"edad\": 31,\r\n  \"identificacion\": \"1717171717\",\r\n  \"telefono\": \"0987654321\",\r\n  \"direccion\": \"Av. Siempre Viva 742\",\r\n  \"contrasena\": \"nueva clave\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8095/mscliente/api/clientes/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8095",
+							"path": [
+								"mscliente",
+								"api",
+								"clientes",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cuentas",
+			"item": [
+				{
+					"name": "Crear cuenta",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cliente\":\"NA\",\r\n  \"numeroCuenta\": \"50666330144\",\r\n  \"tipoCuenta\": \"Corriente\",\r\n  \"saldoInicial\": 120000\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8096/mscuenta/api/cuentas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8096",
+							"path": [
+								"mscuenta",
+								"api",
+								"cuentas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Editar cuenta",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"numeroCuenta\": \"103332765981214\",\r\n  \"tipoCuenta\": \"Ahorro\",\r\n  \"saldoInicial\": 2000\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8096/mscuenta/api/cuentas/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8096",
+							"path": [
+								"mscuenta",
+								"api",
+								"cuentas",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ver cuentas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8096/mscuenta/api/cuentas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8096",
+							"path": [
+								"mscuenta",
+								"api",
+								"cuentas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Borrar (soft) cuenta",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8096/mscuenta/api/cuentas/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8096",
+							"path": [
+								"mscuenta",
+								"api",
+								"cuentas",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ver cuentas por número",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8096/mscuenta/api/cuentas/cuenta?numeroCuenta=430000144455544",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8096",
+							"path": [
+								"mscuenta",
+								"api",
+								"cuentas",
+								"cuenta"
+							],
+							"query": [
+								{
+									"key": "numeroCuenta",
+									"value": "430000144455544"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Movimientos",
+			"item": []
+		}
+	]
+}
