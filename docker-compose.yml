@@ -42,7 +42,8 @@ services:
       - net-tcs
   dbCuentas:
     image: postgres:15
-    container_name: postgres-db
+    container_name: dbCuentas-db
+
     environment:
       POSTGRES_USER: user_cuentas
       POSTGRES_PASSWORD: cuentas.TCS
