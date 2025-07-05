@@ -3,9 +3,11 @@ package com.tcs.mscuenta.application.dto.cuenta;
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 public class CuentaCrearDTO {
 
     @NotNull(message = "El número de cuenta es obligatorio")

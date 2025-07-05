@@ -1,9 +1,11 @@
 package com.tcs.mscliente.application.dto;
 
-import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 @EqualsAndHashCode(callSuper = true)
 public class ClienteVerDTO extends ClienteCrearDTO {
     private Integer id;

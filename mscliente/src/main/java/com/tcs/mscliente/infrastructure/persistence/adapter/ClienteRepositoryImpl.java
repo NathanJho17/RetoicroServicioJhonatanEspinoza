@@ -11,17 +11,16 @@ import com.tcs.mscliente.infrastructure.mapper.ClienteMapper;
 import com.tcs.mscliente.infrastructure.persistence.entity.ClienteEntity;
 import com.tcs.mscliente.infrastructure.persistence.jpa.IJpaClienteRepository;
 
+import lombok.RequiredArgsConstructor;
+
 @Repository
+@RequiredArgsConstructor
 public class ClienteRepositoryImpl implements IClienteRepository {
 
-    private IJpaClienteRepository _jpaClienteRepository;
-    private ClienteMapper _clienteMapper;
+    private final IJpaClienteRepository _jpaClienteRepository;
+    private final ClienteMapper _clienteMapper;
 
-    public ClienteRepositoryImpl(IJpaClienteRepository jpaClienteRepository, ClienteMapper clienteMapper) {
-        _jpaClienteRepository = jpaClienteRepository;
-        _clienteMapper = clienteMapper;
-
-    }
+   
 
     @Override
     public Integer save(Cliente cliente) {

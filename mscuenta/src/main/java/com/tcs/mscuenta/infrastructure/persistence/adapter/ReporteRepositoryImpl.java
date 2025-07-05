@@ -11,18 +11,15 @@ import com.tcs.mscuenta.infrastructure.mapper.MovimientoMapper;
 import com.tcs.mscuenta.infrastructure.persistence.entity.MovimientoEntity;
 import com.tcs.mscuenta.infrastructure.persistence.jpa.IJpaReporteRepository;
 
+import lombok.RequiredArgsConstructor;
+
 @Repository
+@RequiredArgsConstructor
 public class ReporteRepositoryImpl implements IReporteRepository {
 
-    private IJpaReporteRepository _jpaReporteRepository;
-    private MovimientoMapper _movimientoMapper;
+    private final IJpaReporteRepository _jpaReporteRepository;
+    private final MovimientoMapper _movimientoMapper;
 
-    public ReporteRepositoryImpl(IJpaReporteRepository jpaReporteRepository,
-            MovimientoMapper movimientoMapper) {
-        _jpaReporteRepository = jpaReporteRepository;
-       _movimientoMapper = movimientoMapper;
-
-    }
 
     @Override
     public List<Movimiento> getAllByCuenta(LocalDate fechaInicio, LocalDate fechaFin) {

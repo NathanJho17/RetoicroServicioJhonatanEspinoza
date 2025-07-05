@@ -11,17 +11,16 @@ import com.tcs.mscuenta.infrastructure.mapper.CuentaMapper;
 import com.tcs.mscuenta.infrastructure.persistence.entity.CuentaEntity;
 import com.tcs.mscuenta.infrastructure.persistence.jpa.IJpaCuentaRepository;
 
+import lombok.RequiredArgsConstructor;
+
 @Repository
+@RequiredArgsConstructor
 public class CuentaRepositoryImpl implements ICuentaRepository {
 
-    private IJpaCuentaRepository _jpaCuentaRepository;
-    private CuentaMapper _cuentaMapper;
-
-    public CuentaRepositoryImpl(IJpaCuentaRepository jpaCuentaRepository, CuentaMapper cuentaMapper) {
-        _jpaCuentaRepository = jpaCuentaRepository;
-        _cuentaMapper = cuentaMapper;
-
-    }
+    private final IJpaCuentaRepository _jpaCuentaRepository;
+    private final CuentaMapper _cuentaMapper;
+    
+    
 
     @Override
     public Integer save(Cuenta cuenta) {

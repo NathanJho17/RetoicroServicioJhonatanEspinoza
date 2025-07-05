@@ -1,9 +1,11 @@
 package com.tcs.mscuenta.application.dto.cuenta;
 
-import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 @EqualsAndHashCode(callSuper = true)
 public class CuentaEditarDTO extends CuentaCrearDTO{
 

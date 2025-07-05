@@ -17,6 +17,9 @@ public interface MovimientoDTOMapper {
 
     @Mapping(source = "cuentaId", target = "idCuenta")
     @Mapping(target = "saldo", ignore = true)
+    @Mapping(target = "id", ignore = true)
+    @Mapping(target = "fecha", ignore = true)
+     @Mapping(target = "cuenta", ignore = true)
     Movimiento toDomain(MovimientoCrearDTO dto);
 
     MovimientoVerDTO toVerDTO(Movimiento movimiento);

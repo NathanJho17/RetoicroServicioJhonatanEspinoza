@@ -16,23 +16,18 @@ import com.tcs.mscuenta.infrastructure.persistence.entity.MovimientoEntity;
 import com.tcs.mscuenta.infrastructure.persistence.jpa.IJpaCuentaRepository;
 import com.tcs.mscuenta.infrastructure.persistence.jpa.IJpaMovimientoRepository;
 
+import lombok.RequiredArgsConstructor;
+
 @Repository
+@RequiredArgsConstructor
 public class MovimientoRepositoryImpl implements IMovimientoRepository {
 
-    private IJpaMovimientoRepository _jpaMovimientoRepository;
-    private MovimientoMapper _movimientoMapper;
-    private CuentaMapper _cuentaMapper;
-    private IJpaCuentaRepository _jpaCuentaRepository;
+    private final IJpaMovimientoRepository _jpaMovimientoRepository;
+    private  final MovimientoMapper _movimientoMapper;
+    private final CuentaMapper _cuentaMapper;
+    private  final IJpaCuentaRepository _jpaCuentaRepository;
 
-    public MovimientoRepositoryImpl(IJpaMovimientoRepository jpaMovimientoRepository,
-            MovimientoMapper movimientoMapper, CuentaMapper cuentaMapper,
-            IJpaCuentaRepository jpaCuentaRepository) {
-        _jpaMovimientoRepository = jpaMovimientoRepository;
-        _movimientoMapper = movimientoMapper;
-        _cuentaMapper = cuentaMapper;
-        _jpaCuentaRepository = jpaCuentaRepository;
-
-    }
+    
 
     @Override
     public Movimiento save(Movimiento movimiento, Cuenta cuenta) {
