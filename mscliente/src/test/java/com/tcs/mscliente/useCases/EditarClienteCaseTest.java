@@ -1,12 +1,14 @@
 package com.tcs.mscliente.useCases;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.when;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -22,6 +24,7 @@ import com.tcs.mscliente.domain.model.Cliente;
 import com.tcs.mscliente.domain.repository.IClienteRepository;
 
 @ExtendWith(MockitoExtension.class)
+@DisplayName("EditarClienteCase Test")
 public class EditarClienteCaseTest {
 
     @Mock
@@ -72,12 +75,46 @@ public class EditarClienteCaseTest {
     void debeRetornarClienteNoEncontrado() {
 
         // A
+        RespuestaGenerica<Integer> respuestaGenerica = new RespuestaGenerica<Integer>(false,
+                "Cliente no encontrado con id " + id, null);
         when(clienteRepository.getById(id)).thenReturn(null);
-        // A
-        Cliente clienteEncontrado = clienteRepository.getById(id);
 
         // A
-        assertNull(clienteEncontrado);
+        Cliente cliente = clienteRepository.getById(id);
+        RespuestaGenerica<ClienteVerDTO> clienteEncontrado = editarClienteCase.update(id, dto);
+
+        // A
+        assertNull(cliente);
+        assertEquals(respuestaGenerica, clienteEncontrado);
+        assertEquals("Cliente no encontrado con id " + id, clienteEncontrado.getMensaje());
+
+    }
+
+    @Test
+    void debeRetornarExcepcionAlEditarCliente() {
+        // A
+        String exceptionErrorMessage = "Error al editar cliente";
+        RespuestaGenerica<ClienteVerDTO> respuestaGenerica = new RespuestaGenerica<ClienteVerDTO>(false,
+                "No se pudo actualizar el cliente", null,exceptionErrorMessage);
+        Cliente cliente = new Cliente();
+        cliente.setId(id);
+
+        ClienteVerDTO clienteVerDTO = new ClienteVerDTO();
+        clienteVerDTO.setId(id);
+        clienteVerDTO.setNombreApellido(dto.getNombreApellido());
+
+        when(clienteRepository.getById(id)).thenReturn(cliente);
+        when(clienteRepository.update(cliente)).thenThrow(new RuntimeException(exceptionErrorMessage));
+/*         when(clienteDTOMapper.toVerDTO(cliente)).thenReturn(clienteVerDTO);
+ */        // A
+        RespuestaGenerica<ClienteVerDTO> editarCliente = editarClienteCase.update(id, dto);
+
+        // A
+
+        assertEquals(respuestaGenerica, editarCliente);
+        assertFalse(editarCliente.isSatisfactorio());
+        assertEquals("No se pudo actualizar el cliente", editarCliente.getMensaje());
+        assertEquals(exceptionErrorMessage, editarCliente.getError());
     }
 
     @Test
