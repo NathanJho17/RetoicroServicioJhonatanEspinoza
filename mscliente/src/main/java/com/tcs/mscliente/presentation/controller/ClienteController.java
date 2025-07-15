@@ -53,7 +53,7 @@ public class ClienteController {
     public ResponseEntity<RespuestaGenerica<Integer>> saveClient(@Valid @RequestBody ClienteCrearDTO clienteCrearDTO) {
         RespuestaGenerica<Integer> response = _clienteCase.create(clienteCrearDTO);
         if (response.isSatisfactorio()) {
-            return ResponseEntity.ok(response);
+            return ResponseEntity.status(HttpStatus.CREATED).body(response);
         } else {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
         }
@@ -72,7 +72,7 @@ public class ClienteController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<RespuestaGenerica<Integer>> softDelete(@PathVariable Integer id) {
+    public ResponseEntity<RespuestaGenerica<Integer>> softDelete(@PathVariable("id") Integer id) {
         RespuestaGenerica<Integer> response = _borrarClienteCase.delete(id);
         if (response.isSatisfactorio()) {
             return ResponseEntity.ok(response);
@@ -88,7 +88,7 @@ public class ClienteController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<RespuestaGenerica<ClienteVerDTO>> update(@PathVariable Integer id,
+    public ResponseEntity<RespuestaGenerica<ClienteVerDTO>> update(@PathVariable("id") Integer id,
             @RequestBody ClienteEditarDTO clienteEditarDTO) {
         RespuestaGenerica<ClienteVerDTO> response = _editarClienteCase.update(id, clienteEditarDTO);
         if (response.isSatisfactorio()) {
